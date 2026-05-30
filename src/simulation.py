@@ -1,4 +1,5 @@
 import numpy as np
+from bodies import bodies
 #from scipy.integrate import solve_ivp
 
 
@@ -12,8 +13,17 @@ r = np.zeros((3, nt))
 v = np.zeros((3, nt))
 
 
+# set r_x                       ## NEED TO TIDY UP LATER 
+E_r = bodies['Earth']['r']
+M_r = bodies['Moon']['r']
+M_d = bodies['Moon']['d']
+r_x = E_r + M_r + M_d
+
+#print('r_x:', r_x)
+
+'''
 # set ICs
-r[0] = (r_x, 0, 0)                  ## distance from center of mass (c.o.m at origin for simplicity)
+r[0,0] = (r_x, 0, 0)                  ## distance from center of mass (c.o.m at origin for simplicity)
 v[0] = (v_x, v_y, v_z)              ## approx. circular velocity
 
 
@@ -25,3 +35,4 @@ for t in range(1, nt-1):
     v[t+1] = v[t] + (a_grv + a_thr) * dt
     r[t+1] = r[t] + v[t+1] * dt
 
+'''
