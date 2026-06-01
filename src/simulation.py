@@ -1,6 +1,5 @@
 import numpy as np
-from bodies import bodies
-from scipy import constants
+from physics import r_x
 #from scipy.integrate import solve_ivp
 
 
@@ -8,32 +7,9 @@ from scipy import constants
 dt = 0.001                      ## size of time step
 nt = 1000                        ## final time
 
-
 # initialize arrays.   dim: 3 x nt
 r = np.zeros((3, nt))
 v = np.zeros((3, nt))
-
-
-'''
-User will select center of mass and orbiting body here
-For now, I will just test out the interaction between the Moon and Earth
-'''
-
-# gravitational constant G
-G = constants.G
-
-# calculate M and subsequently mu
-M = bodies['Earth']['m'] + bodies['Moon']['m']
-mu = G * M
-
-# set r_x                       ## NEED TO TIDY UP LATER 
-E_r = bodies['Earth']['r']
-M_r = bodies['Moon']['r']
-M_d = bodies['Moon']['d']
-r_x = E_r + M_r + M_d
-
-#print('r_x:', r_x)
-
 
 # set ICs
 r[0, 0] = r_x                  ## distance from center of mass (c.o.m at origin for simplicity)
@@ -62,5 +38,5 @@ def time_step(v, r, mu):
         r[1, t+1] = r[1, t] + v[1, t+1] * dt
         r[2, t+1] = r[2, t] + v[2, t+1] * dt
 
-    return v, r
+    return r
 

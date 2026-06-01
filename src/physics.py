@@ -1,3 +1,45 @@
+from scipy import constants
+import numpy as np
+
+from bodies import bodies
+
+
+'''
+User will select center of mass and orbiting body here
+For now, I will just test out the interaction between the Moon and Earth
+'''
+
+# gravitational constant G
+G = constants.G
+
+# calculate M and subsequently mu
+M = bodies['Earth']['m'] + bodies['Moon']['m']
+mu = G * M
+
+# set r_x                       ## NEED TO TIDY UP LATER 
+E_r = bodies['Earth']['r']
+M_r = bodies['Moon']['r']
+M_d = bodies['Moon']['d']
+r_x = E_r + M_r + M_d
+
+#print('r_x:', r_x)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # two-body equations
 
 '''
