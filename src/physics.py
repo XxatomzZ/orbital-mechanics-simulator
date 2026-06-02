@@ -16,6 +16,8 @@ G = constants.G
 M = bodies['Earth']['m'] + bodies['Moon']['m']
 mu = G * M
 
+print(mu)
+
 # set r_x                       ## NEED TO TIDY UP LATER 
 E_r = bodies['Earth']['r']
 M_r = bodies['Moon']['r']
