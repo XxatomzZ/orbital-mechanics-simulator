@@ -39,13 +39,13 @@ r_x = E_r + M_r + M_d
 
 
 
-
+'''
 # two-body equations
 
-'''
-r = ||r_|| = sqrt[(r_x)^2 + (r_y)^2 + (r_z)^2]                  ##dist. to centre of mass
-a_ = r_tt =  - (mu / r^3) * r_
-'''
+
+#r = ||r_|| = sqrt[(r_x)^2 + (r_y)^2 + (r_z)^2]                  ##dist. to centre of mass
+#a_ = r_tt =  - (mu / r^3) * r_
+
 
 # def acceleration(mu, r, R):
     a = - (mu / r**2) * 1/r * R
@@ -65,3 +65,4 @@ a_ = r_tt =  - (mu / r^3) * r_
 
 ## r1 = int [v1] dt + r1_0
 ## r2 = int [v2] dt + r2_0
+'''
