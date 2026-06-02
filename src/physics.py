@@ -13,16 +13,16 @@ For now, I will just test out the interaction between the Moon and Earth
 G = constants.G
 
 # calculate M and subsequently mu
-M = bodies['Earth']['m'] + bodies['Moon']['m']
-mu = G * M
+M = bodies['Earth']['m']
+mu = G * M / 1e9               ## / 10e9 as we want in units km3/s2 rather than m3/s2
 
 print(mu)
 
 # set r_x                       ## NEED TO TIDY UP LATER 
-E_r = bodies['Earth']['r']
-M_r = bodies['Moon']['r']
-M_d = bodies['Moon']['d']
-r_x = E_r + M_r + M_d
+#E_r = bodies['Earth']['r']
+#M_r = bodies['Moon']['r']
+#M_d = bodies['Moon']['d']
+#r_x = E_r + M_r + M_d
 
 #print('r_x:', r_x)
 
