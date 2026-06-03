@@ -6,8 +6,8 @@ from physics import mu, orbiting_body
 
 
 # time step values
-dt = 60.0                      ## size of time step
-nt = 500000                        ## final time
+dt = bodies[orbiting_body]['dt']                     ## size of time step
+nt = bodies[orbiting_body]['nt']                        ## final time
 
 # initialize arrays.   dim: 3 x nt
 r = np.zeros((3, nt))
