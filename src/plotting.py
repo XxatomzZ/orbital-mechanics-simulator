@@ -15,7 +15,7 @@ z = r[2, :]
 # plotting curves on a 3D axis
 col1 = bodies[orbiting_body]['color']                       ## color of orbiting path
 col2 = bodies[com]['color']                                 ## color of center of mass
-size = bodies[com]['size']
+size = bodies[com]['size']                                  ## size of center of mass
 
 ax = plt.figure().add_subplot(projection='3d')              ## initialize axes
 
