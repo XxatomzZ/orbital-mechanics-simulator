@@ -15,7 +15,7 @@ z = r[2, :]
 ax = plt.figure().add_subplot(projection='3d')              ## initialize axes
 
 ax.plot(x, y, z, label='Orbital Path')
-ax.scatter(0, 0, 0, c='blue', s=10)
+ax.scatter(0, 0, 0, c='lime', s=10)
 ax.legend()
 
 plt.show()

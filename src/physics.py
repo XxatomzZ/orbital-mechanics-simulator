@@ -8,12 +8,19 @@ from bodies import bodies
 User will select center of mass and orbiting body here
 For now, I will just test out the interaction between the Moon and Earth
 '''
+while True:
+        orbiting_body = input('Which orbit would you like to see:').casefold()
+        if orbiting_body in bodies:
+            break
+        else:
+            print("❗ Please enter a valid astronomical body:")
+            print("Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune, Pluto, Moon")
 
 # gravitational constant G
 G = constants.G
 
 # calculate M and subsequently mu
-M = bodies['Earth']['m']
+M = bodies[orbiting_body]['m']
 mu = G * M / 1e9               ## / 10e9 as we want in units km3/s2 rather than m3/s2
 
 print(mu)
