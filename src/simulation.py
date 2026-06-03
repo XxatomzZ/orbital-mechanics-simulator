@@ -1,6 +1,8 @@
 import numpy as np
-from physics import mu
 #from scipy.integrate import solve_ivp
+
+from bodies import bodies
+from physics import mu, orbiting_body
 
 
 # time step values
@@ -13,12 +15,12 @@ v = np.zeros((3, nt))
 
 # set ICs
 # values sourced from NASAs horizon system
-r[0, 0] = -2.411e5                  ## distance from center of mass (c.o.m at origin for simplicity)
-r[1, 0] = -3.232e5                  ## NEED TO DOUBLE CHECK SCALING
-r[2, 0] = -3.462e4
-v[0, 0] = 0.7719468739232185                    ## v_x
-v[1, 0] = -0.5951965931163530                   ## v_y
-v[2, 0] = -0.01668873195866993                  ## v_z 
+r[0, 0] = bodies[orbiting_body]['r_x']                  ## distance from center of mass (c.o.m at origin for simplicity)
+r[1, 0] = bodies[orbiting_body]['r_y']
+r[2, 0] = bodies[orbiting_body]['r_z']
+v[0, 0] = bodies[orbiting_body]['v_x']
+v[1, 0] = bodies[orbiting_body]['v_y']
+v[2, 0] = bodies[orbiting_body]['v_z']
 
 v_mag = np.sqrt(v[0,0]**2 + v[1,0]**2 + v[2,0]**2)
 print('v_mag:', v_mag)

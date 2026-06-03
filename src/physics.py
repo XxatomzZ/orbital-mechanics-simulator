@@ -1,5 +1,5 @@
 from scipy import constants
-import numpy as np
+#import numpy as np
 
 from bodies import bodies
 
@@ -9,29 +9,32 @@ User will select center of mass and orbiting body here
 For now, I will just test out the interaction between the Moon and Earth
 '''
 while True:
-        orbiting_body = input('Which orbit would you like to see:').casefold()
-        if orbiting_body in bodies:
-            break
-        else:
-            print("❗ Please enter a valid astronomical body:")
-            print("Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune, Pluto, Moon")
+    orbiting_body = input('Which orbit would you like to see:').casefold()
+    if orbiting_body in bodies:
+        break
+    else:
+        print("❗ Please enter a valid astronomical body:")
+        print("Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune, Pluto, Moon")         ## make this automatic ??
 
 # gravitational constant G
 G = constants.G
 
 # calculate M and subsequently mu
-M = bodies[orbiting_body]['m']
+sun_orbits = {'mercury', 'venus', 'earth', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune', 'pluto'}
+earth_orbits = 'moon'
+if orbiting_body in sun_orbits:
+    com = 'sun'
+    M = bodies['sun']['m']
+else:
+    com = 'earth'
+    M = bodies['earth']['m']
+
+
+
 mu = G * M / 1e9               ## / 10e9 as we want in units km3/s2 rather than m3/s2
 
 print(mu)
 
-# set r_x                       ## NEED TO TIDY UP LATER 
-#E_r = bodies['Earth']['r']
-#M_r = bodies['Moon']['r']
-#M_d = bodies['Moon']['d']
-#r_x = E_r + M_r + M_d
-
-#print('r_x:', r_x)
 
 
 
