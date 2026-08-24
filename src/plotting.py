@@ -3,27 +3,57 @@ import matplotlib.pyplot as plt
 
 from simulation import r, nt
 from bodies import bodies
-from physics import orbiting_body, com
+from physics import orbiting_body, com, sun_orbits
 
-# set variables using data from simulation.py
-x = r[0, :]
-y = r[1, :]
-z = r[2, :]
-#y = np.zeros(nt)
-#z = np.zeros(nt)
+if orbiting_body in sun_orbits:
+    # set variables using data from simulation.py
+    x = r[0, :]
+    y = r[1, :]
+    z = r[2, :]
+    #y = np.zeros(nt)
+    #z = np.zeros(nt)
 
-# plotting curves on a 3D axis
-col1 = bodies[orbiting_body]['color']                       ## color of orbiting path
-col2 = bodies[com]['color']                                 ## color of center of mass
-size = bodies[com]['size']                                  ## size of center of mass
+    # plotting curves on a 3D axis
+    col1 = bodies[orbiting_body]['color']                       ## color of orbiting path
+    col2 = bodies[com]['color']                                 ## color of center of mass
+    size = bodies[com]['size']                                  ## size of center of mass
 
-ax = plt.figure().add_subplot(projection='3d')              ## initialize axes
+    ax = plt.figure().add_subplot(projection='3d')              ## initialize axes
 
-ax.plot(x, y, z, label='Orbital Path', c=col1)
-ax.scatter(0, 0, 0, c=col2, s=size)
-ax.legend()
+    ax.plot(x, y, z, label='Orbital Path', c=col1)
+    ax.scatter(0, 0, 0, c=col2, s=size)
+    ax.legend()
 
-plt.show()
+    #plt.savefig('mercury-orbit.png', dpi=300, bbox_inches='tight')
+    plt.show()
 
-#print(x)
+    #print(x)
+
+else:
+    from simulation import results
+
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+
+    colors = [bodies['mercury']['color'], bodies['venus']['color'], bodies['earth']['color'],
+              bodies['mars']['color'], bodies['jupiter']['color'], bodies['saturn']['color'],
+              bodies['uranus']['color'], bodies['neptune']['color'], bodies['pluto']['color']]
+    labels = ['mercury', 'venus', 'earth', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune', 'pluto']
+
+    for i, r in enumerate(results):
+        x = r[0, :]
+        y = r[1, :]
+        z = r[2, :]
+        ax.plot(x, y, z, color=colors[i], label=labels[i])
+
+    col = bodies['sun']['color']
+    ax.scatter(0, 0, 0, c=col, s=1)
+
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('Z')
+    ax.legend()
+
+    #plt.savefig('all-orbits.png', dpi=300, bbox_inches='tight')
+    plt.show()
 

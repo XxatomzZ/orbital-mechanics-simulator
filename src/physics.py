@@ -9,20 +9,44 @@ User will select center of mass and orbiting body here
 For now, I will just test out the interaction between the Moon and Earth
 '''
 while True:
-    orbiting_body = input('Which orbit would you like to see:').casefold()
+    orbiting_body = input('Which orbit would you like to see: (type all to see all planetary orbits)').casefold()
     if orbiting_body in bodies:
+        break
+    elif orbiting_body == 'all':
         break
     else:
         print("❗ Please enter a valid astronomical body:")
         print("Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune, Pluto, Moon")         ## make this automatic ??
 
+# ask user if they would like to add more orbits to the plot
+# each orbit will need to store an individual orbiting_body, com, M, and r
+# or plot line then run through next orbit and add to plot ??????
+'''
+while answer.upper() != 'N':
+  play()
+  answer = input('Add more orbital paths? (Y/N) ')
+
+
+while True:
+    additional_body = input('Would you like to plot anymore orbital paths?').casefold()
+    if orbiting_body in bodies:
+        break
+    else:
+        print("❗ Please enter a valid astronomical body:")
+        print("Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune, Pluto, Moon")
+'''
+
+
 # gravitational constant G
 G = constants.G
 
 # calculate M and subsequently mu
-sun_orbits = {'mercury', 'venus', 'earth', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune', 'pluto'}
+sun_orbits = ['mercury', 'venus', 'earth', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune', 'pluto']
 earth_orbits = 'moon'
 if orbiting_body in sun_orbits:
+    com = 'sun'
+    M = bodies['sun']['m']
+elif orbiting_body == 'all':
     com = 'sun'
     M = bodies['sun']['m']
 else:
